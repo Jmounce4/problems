@@ -6,7 +6,7 @@ class Solution(object):
         :rtype: List[List[int]]
         """
         
-        sortedList = nums.sort()
+        nums.sort()
         newArray = []
         for i in range(0, len(nums), 3):
             first = nums[i]
