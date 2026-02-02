@@ -1,0 +1,70 @@
+
+Lesson 2:
+
+Find the first 5 Pixar movies and their release year ✓
+
+SELECT Title, Year FROM movies
+WHERE ID IN (1, 2, 3, 4, 5);
+
+
+
+
+Lesson 3:
+
+Find all the Toy Story movies ✓
+SELECT title, director FROM movies 
+WHERE title LIKE "Toy Story%";
+
+Find all the WALL-* movies ✓
+SELECT title, director FROM movies 
+WHERE Title LIKE "WALL-%";
+
+
+
+
+
+Lesson 4: Filtering and sorting query
+
+List all directors of Pixar movies (alphabetically), without duplicates ✓
+SELECT DISTINCT Director FROM movies
+ORDER BY Director ASC;
+
+List the last four Pixar movies released (ordered from most recent to least) ✓
+SELECT Title, Year 
+FROM movies
+ORDER BY year DESC
+LIMIT 4;
+
+List the first five Pixar movies sorted alphabetically ✓
+SELECT Title, Year 
+FROM movies
+ORDER BY Title ASC
+LIMIT 5;
+
+List the next five Pixar movies sorted alphabetically ✓
+SELECT Title, Year 
+FROM movies
+ORDER BY Title ASC
+LIMIT 5 OFFSET 5;
+
+
+
+
+
+1-4 Review:
+
+// NESTED SQL STATEMENT!!
+
+List all the cities west of Chicago, ordered from west to east ✓
+SELECT * FROM north_american_cities
+WHERE Longitude < (
+  SELECT Longitude FROM north_american_cities
+  WHERE city = 'Chicago'
+  )
+ORDER BY Longitude;
+
+List the third and fourth largest cities (by population) in the United States and their population ✓
+SELECT * FROM north_american_cities
+WHERE Country = "United States"
+ORDER BY Population DESC
+LIMIT 2 OFFSET 2
